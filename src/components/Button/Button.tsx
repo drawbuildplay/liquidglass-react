@@ -116,16 +116,7 @@ export const Button: React.FC<ButtonProps> = ({
             {label && <span>{label}</span>}
 
             {/* Hover & active states – gives a nice "liquid push" feel */}
-            <style jsx>{`
-        .liquid-glass-button:hover:not(:disabled) {
-          transform: translateY(-1px) scale(1.03);
-        }
 
-        .liquid-glass-button:active:not(:disabled) {
-          transform: translateY(0) scale(0.97);
-          transition: transform 0.12s ease;
-        }
-      `}</style>
         </button>
     );
 };

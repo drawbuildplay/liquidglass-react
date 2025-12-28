@@ -2,8 +2,9 @@
   /* Colors */
   --lg-color-background: #ffffff;
   --lg-color-text: #1d1d1f;
-  --lg-color-primary: #007aff; /* System Blue */
-  
+  --lg-color-primary: #007aff;
+  /* System Blue */
+
   /* Glass Effect Tokens */
   --lg-glass-bg: rgba(255, 255, 255, 0.75);
   --lg-glass-border: rgba(255, 255, 255, 0.4);
@@ -26,7 +27,8 @@ body {
   font-family: var(--lg-font-family);
   color: var(--lg-color-text);
   margin: 0;
-  background: #fbfbfd; /* Apple-like light background */
+  background: #fbfbfd;
+  /* Apple-like light background */
 }
 
 .lg-glass {
@@ -46,4 +48,13 @@ body {
   cursor: pointer;
   font-family: inherit;
   color: inherit;
+}
+
+.liquid-glass-button:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.03);
+}
+
+.liquid-glass-button:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+  transition: transform 0.12s ease;
 }

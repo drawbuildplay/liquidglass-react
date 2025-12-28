@@ -15,7 +15,6 @@ import {
     faUser,
     faPlus,
     faBell,
-    faSearch,
     faTrash,
     faTimes,
 } from '@fortawesome/free-solid-svg-icons';
