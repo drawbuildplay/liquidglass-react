@@ -49,4 +49,4 @@ The library includes a suite of reusable "glass" components:
 
 ## 📱 Showcase Demo
 
-Check out the [Live Demo](https://drawbuildplay.github.io/liquidglass-react/?path=/story/examples-showcase--mobile-app-demo) to see the components in action within a simulated iPhone 16 Pro frame.
+Check out the [Live Demo](https://liquidglass.drawbuildplay.com) to see the components in action within a simulated iPhone 16 Pro frame.
