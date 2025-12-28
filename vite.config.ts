@@ -24,12 +24,11 @@ export default defineConfig({
       fileName: 'liquid-glass-react',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'liquid-glass-react'],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM',
-          'liquid-glass-react': 'LiquidGlassReact'
+          'react-dom': 'ReactDOM'
         },
       },
     },
