@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Liquid Glass React UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, highly aesthetically pleasing React UI component library featuring a "Liquid Glass" design system. This library focuses on transparency, blur effects, and depth to create a premium, native-feeling user interface.
 
-Currently, two official plugins are available:
+## ✨ Design Philosophy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The "Liquid Glass" aesthetic is defined by:
+-   **High Blur & Transparency**: Backgrounds use heavy `backdrop-filter: blur(40px)` with `saturate(190%)` for a vibrant, frosted glass look.
+-   **Depth**: Multi-layered shadows and subtle white borders create a 3D sense of hierarchy.
+-   **Fluidity**: Components like the `Sheet` and `Growl` use smooth, spring-like animations.
+-   **Responsiveness**: Layouts adapt intelligently, such as the `Sheet` transforming from a bottom-sheet on mobile to a centered modal on desktop.
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+-   Node.js (v16+)
+-   npm or yarn
 
-## Expanding the ESLint configuration
+### Installation
+Clone the repository and install dependencies:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/drawbuildplay/liquidglass-react.git
+cd liquidglass-react
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the Environment
+We use **Storybook** for developing and showcasing components in isolation.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run storybook
 ```
+This will open the Storybook interface at `http://localhost:6006`.
+
+## 🧩 Components
+
+The library includes a suite of reusable "glass" components:
+
+-   **`Showcase`**: A full mobile app simulation demonstrating all components working together.
+-   **`Sheet`**: A versatile surface that acts as a bottom-sheet on mobile and a modal on desktop.
+-   **`TabBar`**: A floating, glass-effect navigation bar with active state effects.
+-   **`Toolbar`**: A sticky header component with support for titles and action buttons.
+-   **`PopUpButtonMenu`**: A context menu with glass styling and checkmark support.
+-   **`Alert`**: A premium modal dialog for confirmations and warnings.
+-   **`Growl`**: A slide-down notification for non-blocking feedback.
+-   **`Button`**: Pill-shaped buttons with various variants (Primary, Secondary, Ghost, Destructive).
+-   **`Overlay`**: A standard modal backdrop utility.
+
+## 📱 Showcase Demo
+
+Check out `Examples > Showcase > Mobile App Demo` in Storybook to see the components in action within a simulated iPhone 16 Pro frame.
