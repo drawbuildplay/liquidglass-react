@@ -1,37 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toolbar } from './Toolbar';
 import { Button } from '../Button/Button';
-import { faArrowLeft, faPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const meta = {
+const meta: Meta<typeof Toolbar> = {
     title: 'Components/Toolbar',
     component: Toolbar,
     parameters: {
-        layout: 'padded',
+        layout: 'fullscreen',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof Toolbar>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Toolbar>;
 
 export const Default: Story = {
     args: {
         title: 'Page Title',
-        children: <Button icon={faArrowLeft} variant="secondary" label="Back" />,
-        rightElement: <Button icon={faPlus} variant="primary" />,
+        leftElement: <Button icon={faBars} variant="ghost" />,
+        rightElement: <Button icon={faSearch} variant="ghost" />,
     },
 };
 
-export const GroupedButtons: Story = {
+export const WithChildren: Story = {
     args: {
-        title: 'Edit Item',
-        children: <Button label="Cancel" variant="ghost" />,
-        rightElement: (
-            <div style={{ display: 'flex', gap: '8px' }}>
-                <Button icon={faEllipsisH} variant="secondary" />
-                <Button label="Done" variant="primary" />
-            </div>
-        ),
-    },
-};
+        children: <div style={{ background: '#eee', padding: '4px 12px', borderRadius: '8px', width: '100%', textAlign: 'center' }}>Search Bar Placeholder</div>,
+        leftElement: <Button icon={faBars} variant="ghost" />,
+    }
+}

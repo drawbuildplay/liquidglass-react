@@ -1,0 +1,11 @@
+/* SwipeableRow.css */
+.swipeable-row-container {
+  border-radius: 12px;
+  /* Matches standard card radius */
+}
+
+/* Ensure icons passed are white/visible if needed, though they are usually styled by the caller */
+.swipeable-row-background svg {
+  color: white;
+  font-size: 18px;
+}

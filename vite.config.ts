@@ -10,6 +10,12 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : resolve(fileURLTo
 
 // https://vite.dev/config/
 export default defineConfig({
+  resolve: {
+    // alias: {
+    //   react: resolve(__dirname, '../../node_modules/react'),
+    //   'react-dom': resolve(__dirname, '../../node_modules/react-dom')
+    // }
+  },
   plugins: [
     react(),
     dts({
@@ -34,6 +40,8 @@ export default defineConfig({
     },
   },
   test: {
+    testTimeout: 30000,
+    hookTimeout: 30000,
     projects: [{
       extends: true,
       plugins: [

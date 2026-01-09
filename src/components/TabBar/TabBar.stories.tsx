@@ -1,59 +1,46 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { TabBar } from './TabBar';
+import { faHome, faUser, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faCog, faBell, faEnvelope, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
-const meta = {
+const meta: Meta<typeof TabBar> = {
     title: 'Components/TabBar',
     component: TabBar,
     parameters: {
-        layout: 'padded',
+        layout: 'centered',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof TabBar>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof TabBar>;
 
 const items = [
-    { id: '1', label: 'Home', icon: <FontAwesomeIcon icon={faHome} /> },
-    { id: '2', label: 'Profile', icon: <FontAwesomeIcon icon={faUser} /> },
-    { id: '3', label: 'Settings', icon: <FontAwesomeIcon icon={faCog} /> },
+    { id: 'home', label: 'Home', icon: <FontAwesomeIcon icon={faHome} /> },
+    { id: 'search', label: 'Search', icon: <FontAwesomeIcon icon={faUser} /> }, // Intentionally weird icon for demo
+    { id: 'alerts', label: 'Alerts', icon: <FontAwesomeIcon icon={faBell} /> },
+    { id: 'settings', label: 'Settings', icon: <FontAwesomeIcon icon={faCog} /> },
 ];
 
 export const Default: Story = {
+    render: (args) => {
+        const [active, setActive] = useState('home');
+        return <TabBar {...args} activeTabId={active} onTabChange={setActive} />;
+    },
     args: {
-        items,
-        activeTabId: '1',
+        items: items,
     },
 };
 
 export const WithSearch: Story = {
-    args: {
-        items: [...items, { id: '4', label: 'Notifications', icon: <FontAwesomeIcon icon={faBell} /> }],
-        activeTabId: '1',
-        showSearch: true,
+    render: (args) => {
+        const [active, setActive] = useState('home');
+        return <TabBar {...args} activeTabId={active} onTabChange={setActive} />;
     },
-};
-
-export const TwoItems: Story = {
     args: {
-        items: [
-            { id: '1', label: 'Home', icon: <FontAwesomeIcon icon={faHome} /> },
-            { id: '2', label: 'Profile', icon: <FontAwesomeIcon icon={faUser} /> },
-        ],
-        activeTabId: '1',
-    }
-};
-
-export const ManyItems: Story = {
-    args: {
-        items: [
-            ...items,
-            { id: '4', label: 'Inbox', icon: <FontAwesomeIcon icon={faEnvelope} /> },
-            { id: '5', label: 'Camera', icon: <FontAwesomeIcon icon={faCamera} /> },
-            { id: '6', label: 'Alerts', icon: <FontAwesomeIcon icon={faBell} /> },
-        ],
-        activeTabId: '1',
-    }
+        items: items,
+        showSearch: true,
+        onSearch: (q) => console.log('Search:', q),
+    },
 };

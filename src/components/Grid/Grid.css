@@ -1,0 +1,82 @@
+/* Liquid Glass Grid Component */
+
+/* Outer container acts as the query container */
+.liquid-glass-grid-container {
+  width: 100%;
+  container-type: inline-size;
+  container-name: grid-container;
+}
+
+/* Inner content grid that responds to the container */
+.liquid-glass-grid-content {
+  display: grid;
+  /* Default to 12 columns for ultra-wide */
+  grid-template-columns: repeat(12, 1fr);
+  gap: 25px;
+  padding: 0 8px;
+  width: 100%;
+  background: white;
+}
+
+/* Responsive Grid - Scaling based on Container Width */
+@container grid-container (max-width: 3300px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(11, 1fr);
+  }
+}
+
+@container grid-container (max-width: 3000px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+@container grid-container (max-width: 2700px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(9, 1fr);
+  }
+}
+
+@container grid-container (max-width: 2400px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@container grid-container (max-width: 2100px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+@container grid-container (max-width: 1800px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@container grid-container (max-width: 1500px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@container grid-container (max-width: 1200px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container grid-container (max-width: 900px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}
+
+@container grid-container (max-width: 600px) {
+  .liquid-glass-grid-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}

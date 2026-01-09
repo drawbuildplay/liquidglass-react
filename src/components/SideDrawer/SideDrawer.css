@@ -1,0 +1,139 @@
+/* Fixed Toggle Button Container */
+.drawer-fixed-toggle {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  z-index: 2000;
+  /* Above the drawer (1000) */
+}
+
+/* Adjust button style */
+/* Adjust button style - minimal overrides for layout */
+.drawer-toggle-btn.liquid-glass-button {
+  /* Force circle */
+  border-radius: 50% !important;
+  padding: 0 !important;
+  /* Let the component handle colors/glass effect via variant="glass" */
+}
+
+/* Hover handled by component, or minimal if needed */
+.drawer-toggle-btn.liquid-glass-button:hover {
+  transform: scale(1.05);
+  /* Keep the scale effect */
+}
+
+.side-drawer-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  /* Container lets clicks pass? No, content should block. */
+  /* pointer-events: none; -> This allows clicking *through* the drawer wrapper if it doesn't cover everything. 
+       But transform moves it. 
+    */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-drawer-content {
+  pointer-events: auto;
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+
+.side-drawer-glass {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  backdrop-filter: blur(20px);
+  background: rgba(20, 20, 23, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  width: 650px;
+  /* New Width */
+  padding: 0 !important;
+}
+
+/* Desktop Behavior */
+@media (min-width: 769px) {
+  .side-drawer-container {
+    transform: translateX(0);
+  }
+
+  .side-drawer-container.collapsed {
+    transform: translateX(-650px);
+    /* Fully hide the 650px content */
+  }
+
+  .drawer-inner {
+    overflow: hidden;
+    /* Disable scroll on desktop as requested */
+  }
+}
+
+.drawer-inner {
+  flex: 1;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  scrollbar-width: none;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.drawer-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.drawer-inner.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mobile: Full Screen Slide-out Overlay */
+@media (max-width: 768px) {
+  .side-drawer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    /* Ensure it covers everything including TabBar */
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .side-drawer-container.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .side-drawer-glass {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    background: rgba(20, 20, 23, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Fixed toggle hidden on mobile (relies on app UI triggers) */
+  .drawer-fixed-toggle {
+    display: none;
+  }
+
+  /* Inner content visible */
+  .side-drawer-container.collapsed .drawer-inner {
+    display: block;
+  }
+
+  /* Backdrop not needed as drawer covers 100% */
+  .side-drawer-backdrop {
+    display: none;
+  }
+}

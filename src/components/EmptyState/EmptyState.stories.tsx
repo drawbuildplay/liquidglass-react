@@ -1,33 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { EmptyState } from './EmptyState';
+import { faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../Button/Button';
-import { faInbox, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const meta = {
+const meta: Meta<typeof EmptyState> = {
     title: 'Components/EmptyState',
     component: EmptyState,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof EmptyState>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof EmptyState>;
 
 export const Default: Story = {
     args: {
+        icon: faBoxOpen,
         title: 'No Items Found',
-        description: 'Try adjusting your search or filter to find what you are looking for.',
-        icon: faSearch,
+        description: 'You haven\'t added any items yet. Start by creating a new one.',
+        action: <Button label="Create Item" variant="primary" />,
     },
 };
 
-export const WithAction: Story = {
+export const WithImage: Story = {
     args: {
-        title: 'No Messages',
-        description: 'You have no new messages in your inbox.',
-        icon: faInbox,
-        action: <Button label="Refresh" variant="primary" onClick={() => console.log('Refresh')} />,
+        imageSrc: 'https://via.placeholder.com/150',
+        title: 'No Connection',
+        description: 'Please check your internet connection and try again.',
+        action: <Button label="Retry" variant="secondary" />,
     },
 };

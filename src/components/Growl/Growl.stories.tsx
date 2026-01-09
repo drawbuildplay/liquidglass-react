@@ -1,36 +1,51 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Growl } from './Growl';
+import { faCheckCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { Button } from '../Button/Button';
 import { useState } from 'react';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-const meta = {
+const meta: Meta<typeof Growl> = {
     title: 'Components/Growl',
     component: Growl,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof Growl>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-const Wrapper = (args: any) => {
-    const [visible, setVisible] = useState(true);
-    return (
-        <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
-            <button onClick={() => setVisible(true)}>Show Notification</button>
-            <Growl {...args} visible={visible} onDismiss={() => setVisible(false)} />
-        </div>
-    );
 };
 
+export default meta;
+type Story = StoryObj<typeof Growl>;
+
 export const Default: Story = {
-    render: (args) => <Wrapper {...args} />,
+    render: (args) => {
+        const [visible, setVisible] = useState(false);
+        return (
+            <div>
+                <Button label="Show Growl" onClick={() => setVisible(true)} />
+                <Growl {...args} visible={visible} onDismiss={() => setVisible(false)} />
+            </div>
+        );
+    },
     args: {
-        message: 'Action completed successfully',
+        message: 'Operation successful',
         icon: faCheckCircle,
-        visible: true,
         duration: 3000,
+    },
+};
+
+export const Info: Story = {
+    render: (args) => {
+        const [visible, setVisible] = useState(false);
+        return (
+            <div>
+                <Button label="Show Info" onClick={() => setVisible(true)} />
+                <Growl {...args} visible={visible} onDismiss={() => setVisible(false)} />
+            </div>
+        );
+    },
+    args: {
+        message: 'New update available',
+        icon: faInfoCircle,
+        duration: 5000,
     },
 };
