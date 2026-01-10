@@ -15,7 +15,11 @@ describe("Grid", () => {
   });
 
   test("applies container classes", () => {
-    render(<Grid data-testid="grid" />);
+    render(
+      <Grid data-testid="grid">
+        <div />
+      </Grid>,
+    );
     const container = screen.getByTestId("grid");
     expect(container).toHaveClass("liquid-glass-grid-container");
     // Inner div check
@@ -24,7 +28,11 @@ describe("Grid", () => {
   });
 
   test("passes other props to container", () => {
-    render(<Grid aria-label="My Grid" />);
+    render(
+      <Grid aria-label="My Grid">
+        <div />
+      </Grid>,
+    );
     // Grid spreads props to outer div
     const container = screen.getByLabelText("My Grid");
     expect(container).toBeInTheDocument();

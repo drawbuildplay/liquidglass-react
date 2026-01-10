@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, act } from "@testing-library/react";
-import { ButtonGroup, ButtonGroupItem } from "./ButtonGroup";
+import { ButtonGroup, type ButtonGroupItem } from "./ButtonGroup";
 import { vi } from "vitest";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 

@@ -99,6 +99,9 @@ describe("ShareButton", () => {
 
         // Restore
         navigator.share = originalShare;
-        navigator.clipboard = originalClipboard;
+        Object.defineProperty(navigator, 'clipboard', {
+            value: originalClipboard,
+            configurable: true
+        });
     });
 });
