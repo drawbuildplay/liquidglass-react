@@ -21,6 +21,7 @@ export default defineConfig({
     dts({
       include: ['src'],
       insertTypesEntry: true,
+      tsconfigPath: './tsconfig.build.json',
     }),
   ],
   build: {
