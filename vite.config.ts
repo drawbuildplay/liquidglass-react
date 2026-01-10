@@ -24,6 +24,9 @@ export default defineConfig({
       tsconfigPath: './tsconfig.build.json',
     }),
   ],
+  optimizeDeps: {
+    include: ['react-dom/client'],
+  },
   build: {
     lib: {
       entry: resolve(dirname, 'src/index.ts'),
