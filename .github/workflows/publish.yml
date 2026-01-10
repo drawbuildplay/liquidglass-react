@@ -20,6 +20,13 @@ jobs:
       - run: npx playwright install --with-deps
       - run: npm test
 
+      - name: Automated Version Bump
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          npm version patch -m "chore: bump version to %s [skip ci]"
+          git push
+
       - name: Publish to NPM
         uses: JS-DevTools/npm-publish@v3
         with:
