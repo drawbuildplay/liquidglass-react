@@ -17,16 +17,10 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <FontAwesomeIcon
-        icon={faExclamationCircle}
-        className={styles.icon}
-      />
+      <FontAwesomeIcon icon={faExclamationCircle} className={styles.icon} />
       <span className={styles.text}>{message}</span>
       {onClose && (
-        <button
-          onClick={onClose}
-          className={styles.closeButton}
-        >
+        <button onClick={onClose} className={styles.closeButton}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       )}

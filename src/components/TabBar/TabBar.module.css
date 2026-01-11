@@ -1,140 +1,140 @@
 /* TabBar.module.css */
 
 .container {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0;
 }
 
 .pill {
-    background: rgba(245, 245, 250, 0.26);
-    backdrop-filter: blur(40px) saturate(190%) contrast(115%);
-    -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
-    border-radius: 32.5px;
-    margin: 0 5px 25px 5px;
-    height: 65px;
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow:
-        0 14px 52px rgba(0, 0, 0, 0.12),
-        inset 0 1px 2px rgba(255, 255, 255, 0.60),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: rgba(245, 245, 250, 0.26);
+  backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+  border-radius: 32.5px;
+  margin: 0 5px 25px 5px;
+  height: 65px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 14px 52px rgba(0, 0, 0, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pillContent {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    transition: padding 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: padding 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .searchContainer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    color: #000000;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #000000;
 }
 
 .searchInput {
-    flex: 1;
-    font-size: 17px;
-    font-weight: 500;
-    color: #000000;
-    padding: 0;
-    margin: 0;
+  flex: 1;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+  padding: 0;
+  margin: 0;
 }
 
 .tabList {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .tabItem {
-    color: #000000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: 1;
-    padding: 0;
-    width: 50px;
-    height: 56px;
-    background: transparent;
-    border-radius: 32.5px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0;
+  width: 50px;
+  height: 56px;
+  background: transparent;
+  border-radius: 32.5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .tabItem.active {
-    color: #007aff;
-    width: 90px;
-    background: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #007aff;
+  width: 90px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .tabItem:not(.active):hover {
-    color: #000000 !important;
+  color: #000000 !important;
 }
 
 .icon {
-    font-size: 24px;
-    height: 24px;
-    width: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
+  font-size: 24px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
 }
 
 .label {
-    margin-top: 2px;
+  margin-top: 2px;
 }
 
 .searchButton {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    /* Reuse glass effect properties manually or via composes if supported, 
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  /* Reuse glass effect properties manually or via composes if supported, 
      but copying is safer for now to avoid complexity */
-    background: rgba(245, 245, 250, 0.26);
-    backdrop-filter: blur(40px) saturate(190%) contrast(115%);
-    -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow:
-        0 14px 52px rgba(0, 0, 0, 0.12),
-        inset 0 1px 2px rgba(255, 255, 255, 0.60),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+  background: rgba(245, 245, 250, 0.26);
+  backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 14px 52px rgba(0, 0, 0, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.05);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-left: 10px;
-    flex-shrink: 0;
-    margin: 0 5px 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 10px;
+  flex-shrink: 0;
+  margin: 0 5px 25px 0;
 }
 
 .searchButton:hover {
-    background: rgba(0, 0, 0, 0.05) !important;
+  background: rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Placeholder styling needs global or specific selector */

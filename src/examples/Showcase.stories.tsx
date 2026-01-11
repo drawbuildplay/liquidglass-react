@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Showcase } from './Showcase';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Showcase } from "./Showcase";
 
 const meta = {
-    title: 'Examples/Showcase',
-    component: Showcase,
-    parameters: {
-        layout: 'fullscreen',
-    },
+  title: "Examples/Showcase",
+  component: Showcase,
+  parameters: {
+    layout: "fullscreen",
+  },
 } satisfies Meta<typeof Showcase>;
 
 export default meta;

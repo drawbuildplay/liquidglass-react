@@ -70,7 +70,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     singleClass,
     fullWidthClass,
     className,
-  ].filter(Boolean).join(" ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   // Calculate visible items based on deterministic limits
   const maxSlots = isDesktop ? 6 : 4;
@@ -87,7 +89,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   }
 
   // Determine icon size for inline styles if needed, or mapped.
-  // We can map size to pixel values if we need to pass them to FontAwesome, 
+  // We can map size to pixel values if we need to pass them to FontAwesome,
   // OR we can set font-size on the button class?
   // Original code: sm: 14px, md: 21px, lg: 24px.
   // I will just use inline style for font-size on the icon for simplicity and precision mapping
@@ -163,14 +165,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   };
 
   return (
-    <div
-      className={containerClassName}
-      style={style}
-    >
+    <div className={containerClassName} style={style}>
       {/* Inner Shine (Shared) */}
-      {!flat && (
-        <div className={styles.shine} />
-      )}
+      {!flat && <div className={styles.shine} />}
 
       {renderContent()}
     </div>

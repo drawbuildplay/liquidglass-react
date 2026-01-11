@@ -37,18 +37,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       aria-label={label || "Checkbox"}
       tabIndex={disabled ? -1 : 0}
       onKeyDown={(e) => {
-        if (!disabled && (e.key === 'Enter' || e.key === ' ')) {
+        if (!disabled && (e.key === "Enter" || e.key === " ")) {
           e.preventDefault();
           handleClick();
         }
       }}
     >
-      <div className={`${styles.box} ${checked ? styles.checked : ""} ${label ? styles.hasLabel : ""}`}>
+      <div
+        className={`${styles.box} ${checked ? styles.checked : ""} ${label ? styles.hasLabel : ""}`}
+      >
         {checked && <FontAwesomeIcon icon={faCheck} />}
       </div>
-      {label && (
-        <span className={styles.label}>{label}</span>
-      )}
+      {label && <span className={styles.label}>{label}</span>}
     </div>
   );
 };

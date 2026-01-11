@@ -41,8 +41,8 @@ export const Sheet: React.FC<SheetProps> = ({
     const checkDesktop = () =>
       setIsDesktop(
         !forceMobile &&
-        window.matchMedia &&
-        window.matchMedia("(min-width: 768px)").matches,
+          window.matchMedia &&
+          window.matchMedia("(min-width: 768px)").matches,
       );
     window.addEventListener("resize", checkDesktop);
     return () => window.removeEventListener("resize", checkDesktop);
@@ -93,9 +93,7 @@ export const Sheet: React.FC<SheetProps> = ({
         aria-labelledby={ariaLabelledBy}
       >
         {/* Content */}
-        <div className={styles.content}>
-          {children}
-        </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>,
     document.body,

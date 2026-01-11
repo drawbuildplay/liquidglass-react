@@ -37,10 +37,7 @@ export const PopUpButtonMenu: React.FC<PopUpButtonMenuProps> = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       // Check if click is inside menu (portal)
-      if (
-        menuRef.current &&
-        menuRef.current.contains(event.target as Node)
-      ) {
+      if (menuRef.current && menuRef.current.contains(event.target as Node)) {
         return;
       }
 
@@ -165,19 +162,10 @@ export const PopUpButtonMenu: React.FC<PopUpButtonMenuProps> = ({
   };
 
   const menuContent = (
-    <div
-      ref={menuRef}
-      className={styles.menu}
-      style={menuStyle}
-    >
+    <div ref={menuRef} className={styles.menu} style={menuStyle}>
       {items.map((item, index) => {
         if (item.type === "separator") {
-          return (
-            <div
-              key={`sep-${index}`}
-              className={styles.separator}
-            />
-          );
+          return <div key={`sep-${index}`} className={styles.separator} />;
         }
 
         const isDestructive = item.variant === "destructive";
@@ -194,14 +182,11 @@ export const PopUpButtonMenu: React.FC<PopUpButtonMenuProps> = ({
             onClick={() => handleItemClick(item)}
             className={itemClass}
             style={{
-              color: !isDestructive && customColor ? customColor : undefined
+              color: !isDestructive && customColor ? customColor : undefined,
             }}
           >
             {item.icon && (
-              <FontAwesomeIcon
-                icon={item.icon}
-                className={styles.itemIcon}
-              />
+              <FontAwesomeIcon icon={item.icon} className={styles.itemIcon} />
             )}
             <span>{item.label}</span>
           </button>

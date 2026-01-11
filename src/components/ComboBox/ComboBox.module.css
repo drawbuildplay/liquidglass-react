@@ -1,62 +1,62 @@
 /* ComboBox.module.css */
 
 .container {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .hasLabel {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0.8;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
 }
 
 .wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .transparent {
-    background: transparent;
-    border-radius: 0;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
+  background: transparent;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
 }
 
 .select {
-    background: transparent;
-    border: none;
-    outline: none;
-    width: 100%;
-    padding: 12px;
-    padding-right: 36px;
-    /* Space for chevron */
-    font-size: 15px;
-    color: inherit;
-    font-family: inherit;
-    appearance: none;
-    -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 12px;
+  padding-right: 36px;
+  /* Space for chevron */
+  font-size: 15px;
+  color: inherit;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .chevron {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    opacity: 0.6;
-    font-size: 12px;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.6;
+  font-size: 12px;
 }

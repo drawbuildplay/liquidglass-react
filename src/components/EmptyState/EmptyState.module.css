@@ -1,37 +1,37 @@
 /* EmptyState.module.css */
 
 .container {
-    width: 320px;
-    max-width: 100%;
-    align-items: center;
-    text-align: center;
-    color: #8e8e93;
-    box-sizing: border-box;
+  width: 320px;
+  max-width: 100%;
+  align-items: center;
+  text-align: center;
+  color: #8e8e93;
+  box-sizing: border-box;
 }
 
 .image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 16px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
 }
 
 .iconWrapper {
-    font-size: 48px;
-    margin-bottom: 16px;
-    opacity: 0.5;
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
 }
 
 .title {
-    margin: 0 0 8px 0;
-    font-size: 19px;
-    font-weight: 700;
-    color: #000000;
-    line-height: 1.2;
+  margin: 0 0 8px 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.2;
 }
 
 .description {
-    margin: 8px 0 24px 0;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #666666;
+  margin: 8px 0 24px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
 }

@@ -19,12 +19,10 @@ export const ComboBox: React.FC<ComboBoxProps> = ({
 
   return (
     <div className={`${styles.container} ${label ? styles.hasLabel : ""}`}>
-      {label && (
-        <label className={styles.label}>
-          {label}
-        </label>
-      )}
-      <div className={`${styles.wrapper} ${isTransparent ? styles.transparent : ""}`}>
+      {label && <label className={styles.label}>{label}</label>}
+      <div
+        className={`${styles.wrapper} ${isTransparent ? styles.transparent : ""}`}
+      >
         <select {...props} style={style} className={styles.select}>
           {children}
         </select>

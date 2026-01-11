@@ -91,8 +91,8 @@ export const Search: React.FC<SearchProps> = ({
         const syntheticEvent = {
           key: "Enter",
           currentTarget: { value: currentValue },
-          preventDefault: () => { },
-          stopPropagation: () => { },
+          preventDefault: () => {},
+          stopPropagation: () => {},
         } as React.KeyboardEvent<HTMLInputElement>;
         onKeyDown(syntheticEvent);
       }
@@ -102,15 +102,9 @@ export const Search: React.FC<SearchProps> = ({
   const isTransparent = variant === "transparent";
 
   return (
-    <div
-      className={`${styles.container} ${className}`}
-      style={style}
-    >
+    <div className={`${styles.container} ${className}`} style={style}>
       {isTransparent && (
-        <FontAwesomeIcon
-          icon={faSearch}
-          className={styles.searchIcon}
-        />
+        <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
       )}
       <Input
         id={id}

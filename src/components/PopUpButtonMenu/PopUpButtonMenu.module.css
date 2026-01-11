@@ -1,89 +1,89 @@
 /* PopUpButtonMenu.module.css */
 
 .triggerWrapper {
-    cursor: pointer;
-    display: flex;
-    width: 100%;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
 }
 
 .triggerWrapper.matchWidth {
-    min-width: 220px;
+  min-width: 220px;
 }
 
 .triggerWrapper.autoWidth {
-    min-width: auto;
+  min-width: auto;
 }
 
 .menu {
-    text-wrap: nowrap;
-    max-height: 50vh;
-    overflow-y: auto;
-    background: rgba(245, 245, 250, 0.65);
-    backdrop-filter: blur(40px) saturate(190%) contrast(115%);
-    -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 30px;
-    font-family: var(--lg-font-family);
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.7),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
-    padding: 6px;
-    display: flex;
-    flex-direction: column;
-    transform-origin: top center;
-    animation: liquid-menu-swoosh 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  text-wrap: nowrap;
+  max-height: 50vh;
+  overflow-y: auto;
+  background: rgba(245, 245, 250, 0.65);
+  backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  font-family: var(--lg-font-family);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top center;
+  animation: liquid-menu-swoosh 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2);
 }
 
 .separator {
-    height: 1px;
-    background: rgba(0, 0, 0, 0.08);
-    margin: 4px 10px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 4px 10px;
 }
 
 .item {
-    all: unset;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #000000;
-    border-radius: 30px;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    user-select: none;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: left;
+  all: unset;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  border-radius: 30px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .item.destructive {
-    color: #FF3B30;
+  color: #ff3b30;
 }
 
 .item.active {
-    color: #007AFF;
-    background: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  color: #007aff;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .itemIcon {
-    font-size: 16px;
-    width: 20px;
+  font-size: 16px;
+  width: 20px;
 }
 
 @keyframes liquid-menu-swoosh {
-    from {
-        transform: scale(0.2) translateY(-15px);
-        opacity: 0;
-    }
+  from {
+    transform: scale(0.2) translateY(-15px);
+    opacity: 0;
+  }
 
-    to {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }

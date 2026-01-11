@@ -32,15 +32,8 @@ export const Growl: React.FC<GrowlProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {icon && (
-          <FontAwesomeIcon
-            icon={icon}
-            className={styles.icon}
-          />
-        )}
-        <span className={styles.message}>
-          {message}
-        </span>
+        {icon && <FontAwesomeIcon icon={icon} className={styles.icon} />}
+        <span className={styles.message}>{message}</span>
       </div>
     </div>
   );

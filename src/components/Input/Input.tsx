@@ -30,19 +30,13 @@ export const Input: React.FC<InputProps> = ({
             <FontAwesomeIcon icon={faSearch} />
           </div>
         )}
-        {leftElement && (
-          <div className={styles.leftElement}>
-            {leftElement}
-          </div>
-        )}
+        {leftElement && <div className={styles.leftElement}>{leftElement}</div>}
         <input
           {...props}
           className={`${styles.input} ${isSearch || leftElement ? styles.paddingLeftSearch : ""} ${rightElement ? styles.paddingRightElement : ""}`}
         />
         {rightElement && (
-          <div className={styles.rightElement}>
-            {rightElement}
-          </div>
+          <div className={styles.rightElement}>{rightElement}</div>
         )}
       </div>
     </div>

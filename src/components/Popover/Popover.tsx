@@ -24,19 +24,10 @@ export const Popover: React.FC<PopoverProps> = ({
                 We add onClick={onClose} to support "clicking the popover... will close the popover"
                 behavior requested for this specific component, overriding Overlay's stopPropagation.
             */}
-      <div
-        className={`${styles.container} ${className}`}
-        onClick={onClose}
-      >
-        {title && (
-          <h3 className={styles.title}>
-            {title}
-          </h3>
-        )}
+      <div className={`${styles.container} ${className}`} onClick={onClose}>
+        {title && <h3 className={styles.title}>{title}</h3>}
 
-        <div className={styles.content}>
-          {children}
-        </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </Overlay>
   );

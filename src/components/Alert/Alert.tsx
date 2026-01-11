@@ -27,14 +27,8 @@ export const Alert: React.FC<AlertProps> = ({
     <Overlay isOpen={isOpen} onClose={onClose}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h3 className={styles.title}>
-            {title}
-          </h3>
-          {message && (
-            <p className={styles.message}>
-              {message}
-            </p>
-          )}
+          <h3 className={styles.title}>{title}</h3>
+          {message && <p className={styles.message}>{message}</p>}
         </div>
 
         <div className={styles.actions}>

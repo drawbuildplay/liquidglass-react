@@ -20,18 +20,16 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
   const dynamicStyle: React.CSSProperties = {
     height: height || "auto",
-    minHeight: height ? undefined : "100px",  // Override min-height if specific height set? Original: minHeight: height ? undefined : "100px"
+    minHeight: height ? undefined : "100px", // Override min-height if specific height set? Original: minHeight: height ? undefined : "100px"
     ...style,
   };
 
   return (
     <div className={styles.container}>
-      <div className={`${styles.wrapper} ${isTransparent ? styles.transparent : ""}`}>
-        <textarea
-          {...props}
-          className={styles.textarea}
-          style={dynamicStyle}
-        />
+      <div
+        className={`${styles.wrapper} ${isTransparent ? styles.transparent : ""}`}
+      >
+        <textarea {...props} className={styles.textarea} style={dynamicStyle} />
       </div>
     </div>
   );

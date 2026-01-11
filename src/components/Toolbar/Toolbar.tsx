@@ -25,25 +25,13 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 
       {/* Content Layer */}
       <div className={styles.content}>
-        <div className={styles.left}>
-          {leftElement}
-        </div>
+        <div className={styles.left}>{leftElement}</div>
 
-        {title && (
-          <div className={styles.title}>
-            {title}
-          </div>
-        )}
+        {title && <div className={styles.title}>{title}</div>}
 
-        {children && (
-          <div className={styles.center}>
-            {children}
-          </div>
-        )}
+        {children && <div className={styles.center}>{children}</div>}
 
-        <div className={styles.right}>
-          {rightElement}
-        </div>
+        <div className={styles.right}>{rightElement}</div>
       </div>
     </div>
   );

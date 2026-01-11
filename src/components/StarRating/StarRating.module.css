@@ -1,27 +1,29 @@
 /* StarRating.module.css */
 
 .container {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .readonly {
-    cursor: default;
+  cursor: default;
 }
 
 .interactive {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .star {
-    transition: color 0.2s ease, transform 0.1s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  transition:
+    color 0.2s ease,
+    transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .star.interactive:hover {
-    /* Scale handled by inline style condition in original logic for *active* stars?
+  /* Scale handled by inline style condition in original logic for *active* stars?
      Original: !readonly && isActive ? "scale(1.1)" : "scale(1)"
      I can move scale logic here if possible, but it depends on 'isActive' which is a prop.
      I'll keep specific transform logic inline if it's dynamic based on state.

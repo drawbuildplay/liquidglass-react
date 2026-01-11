@@ -20,7 +20,9 @@
   --lg-spacing-xl: 32px;
 
   /* Typography */
-  --lg-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --lg-font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 body {

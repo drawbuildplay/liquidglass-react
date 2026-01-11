@@ -84,14 +84,11 @@ export const TabBar: React.FC<TabBarProps> = ({
     : contentWidth;
 
   return (
-    <div
-      style={style}
-      className={`${styles.container} ${className}`}
-    >
+    <div style={style} className={`${styles.container} ${className}`}>
       <div
         className={styles.pill}
         style={{
-          width: `min(100% - 10px - ${showSearch ? 80 : 0}px, ${preferredWidth}px)`
+          width: `min(100% - 10px - ${showSearch ? 80 : 0}px, ${preferredWidth}px)`,
         }}
       >
         <div
@@ -138,9 +135,7 @@ export const TabBar: React.FC<TabBarProps> = ({
                     className={`${styles.tabItem} ${isActive ? styles.active : ""}`}
                   >
                     {item.icon && (
-                      <div className={styles.icon}>
-                        {item.icon}
-                      </div>
+                      <div className={styles.icon}>{item.icon}</div>
                     )}
                     <span className={styles.label}>{item.label}</span>
                   </button>

@@ -1,44 +1,44 @@
 /* Checkbox.module.css */
 
 .container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    opacity: 1;
-    user-select: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 1;
+  user-select: none;
 }
 
 .disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .box {
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    color: white;
-    font-size: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  color: white;
+  font-size: 12px;
 }
 
 .box.checked {
-    background: rgba(0, 0, 0, 0.8);
-    border: none;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
 }
 
 .box.hasLabel {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .label {
-    font-size: 15px;
-    font-weight: 500;
+  font-size: 15px;
+  font-weight: 500;
 }

@@ -16,10 +16,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   if (!isOpen) return null;
 
   return createPortal(
-    <div
-      className={styles.backdrop}
-      onClick={onClose}
-    >
+    <div className={styles.backdrop} onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>,
     document.body,
