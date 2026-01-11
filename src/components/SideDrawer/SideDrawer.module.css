@@ -3,8 +3,8 @@
 /* Fixed Toggle Button Container */
 .fixedToggle {
   position: fixed;
-  top: 20px;
-  left: 10px;
+  top: 24px;
+  left: 20px;
   z-index: 2000;
   /* Above the drawer (1000) */
 }
