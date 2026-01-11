@@ -1,5 +1,5 @@
 import React, { useState, useRef, type ReactNode } from "react";
-import "./SwipeableRow.css";
+import styles from "./SwipeableRow.module.css";
 
 interface SwipeableRowProps {
   children: ReactNode;
@@ -220,12 +220,13 @@ export const SwipeableRow: React.FC<SwipeableRowProps> = ({
 
   return (
     <div
-      className={`swipeable-row-container ${className}`}
+      // We keep 'swipeable-row-container' for global targeting by List component or others
+      className={`${styles.container} swipeable-row-container ${className}`}
       style={{ position: "relative", overflow: "hidden" }}
     >
       {/* Background Layer */}
       <div
-        className="swipeable-row-background"
+        className={styles.background}
         style={{
           position: "absolute",
           top: 0,
@@ -247,7 +248,6 @@ export const SwipeableRow: React.FC<SwipeableRowProps> = ({
       {/* Foreground Content */}
       <div
         ref={rowRef}
-        className="swipeable-row-content"
         style={foregroundStyle}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}

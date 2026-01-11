@@ -1,0 +1,11 @@
+/* SwipeableRow.module.css */
+
+.container {
+    border-radius: 12px;
+    /* Matches standard card radius */
+}
+
+.background svg {
+    color: white;
+    font-size: 18px;
+}

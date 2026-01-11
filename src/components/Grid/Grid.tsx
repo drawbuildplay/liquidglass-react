@@ -1,5 +1,5 @@
 import React from "react";
-import "./Grid.css";
+import styles from "./Grid.module.css";
 
 export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -14,14 +14,14 @@ export const Grid: React.FC<GridProps> = ({
 }) => {
   return (
     <div
-      className={`liquid-glass-grid-container ${className}`}
+      className={`${styles.container} ${className}`}
       style={{
         width: "100%",
         ...style,
       }}
       {...props}
     >
-      <div className="liquid-glass-grid-content">{children}</div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };

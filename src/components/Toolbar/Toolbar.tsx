@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Toolbar.module.css";
 
 export interface ToolbarProps {
   children?: React.ReactNode;
@@ -14,76 +15,33 @@ export const Toolbar: React.FC<ToolbarProps> = ({
   leftElement,
   rightElement,
   title,
-  className,
+  className = "",
   style,
 }) => {
-  const defaultContainerStyle: React.CSSProperties = {
-    position: "sticky",
-    paddingTop: "20px", // Safe area spacing
-    top: 0,
-    zIndex: 100,
-    width: "100%",
-    minHeight: "44px", // Reduced height to match iOS standard better
-  };
-
-  const containerStyle = { ...defaultContainerStyle, ...style };
-
   return (
-    <div style={containerStyle} className={className}>
+    <div className={`${styles.container} ${className}`} style={style}>
       {/* Glass Background Layer */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 0,
-        }}
-      />
+      <div className={styles.glassBackground} />
 
       {/* Content Layer */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          height: "100%",
-          padding: "0 5px", // Removed vertical padding, kept horizontal
-          boxSizing: "border-box",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className={styles.content}>
+        <div className={styles.left}>
           {leftElement}
         </div>
 
         {title && (
-          <div
-            style={{
-              flex: "0 0 auto",
-              fontWeight: 600,
-              fontSize: "17px",
-              margin: "0 5px",
-              textAlign: "center",
-            }}
-          >
+          <div className={styles.title}>
             {title}
           </div>
         )}
 
         {children && (
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+          <div className={styles.center}>
             {children}
           </div>
         )}
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-          }}
-        >
+        <div className={styles.right}>
           {rightElement}
         </div>
       </div>

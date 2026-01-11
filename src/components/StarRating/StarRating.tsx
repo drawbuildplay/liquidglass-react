@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import styles from "./StarRating.module.css";
 
 export interface StarRatingProps {
   rating: number | undefined;
@@ -39,13 +40,8 @@ export const StarRating: React.FC<StarRatingProps> = ({
 
   return (
     <div
-      className={`star-rating ${className}`}
-      style={{
-        display: "flex",
-        gap: "4px",
-        cursor: readonly ? "default" : "pointer",
-        ...style,
-      }}
+      className={`${styles.container} ${readonly ? styles.readonly : styles.interactive} ${className}`}
+      style={style}
       onMouseLeave={!readonly ? () => setHoverRating(0) : undefined}
     >
       {stars.map((star) => {
@@ -54,15 +50,12 @@ export const StarRating: React.FC<StarRatingProps> = ({
         return (
           <span
             key={star}
+            className={`${styles.star} ${!readonly ? styles.interactive : ""}`}
             onClick={() => handleClick(star)}
             onMouseEnter={!readonly ? () => setHoverRating(star) : undefined}
             style={{
               color: isActive ? activeColor : inactiveColor,
               fontSize: `${size}px`,
-              transition: "color 0.2s ease, transform 0.1s ease",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               transform: !readonly && isActive ? "scale(1.1)" : "scale(1)",
             }}
           >

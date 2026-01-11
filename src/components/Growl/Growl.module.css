@@ -1,0 +1,50 @@
+/* Growl.module.css */
+
+.container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    pointer-events: none;
+    animation: growl-slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.content {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: rgba(245, 245, 250, 0.95);
+    backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+    -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: var(--lg-font-family);
+    white-space: nowrap;
+}
+
+.icon {
+    color: #007aff;
+    font-size: 16px;
+}
+
+.message {
+    font-weight: 500;
+    font-size: 15px;
+    color: #000000;
+}
+
+@keyframes growl-slide-down {
+    from {
+        transform: translate(-50%, -150%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}

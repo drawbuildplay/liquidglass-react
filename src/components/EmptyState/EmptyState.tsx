@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { GlassPanel } from "../GlassPanel/GlassPanel";
+import styles from "./EmptyState.module.css";
 
 export interface EmptyStateProps {
     icon?: IconProp;
@@ -33,54 +34,26 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
     }, []);
 
     return (
-        <GlassPanel
-            style={{
-                width: "320px",
-                maxWidth: "100%",
-                alignItems: "center",
-                textAlign: "center",
-                color: "#8e8e93", // Keeping original text color preference for readability on light backgrounds if panel is too clear
-                boxSizing: "border-box",
-            }}
-        >
+        <GlassPanel className={styles.container}>
             {imageSrc ? (
                 <img
                     src={imageSrc}
                     alt={title}
-                    style={{
-                        maxWidth: "100%",
-                        height: "auto",
-                        marginBottom: "16px",
-                        ...imageStyle,
-                    }}
+                    className={styles.image}
+                    style={imageStyle}
                 />
             ) : (
                 icon && (
-                    <div style={{ fontSize: "48px", marginBottom: "16px", opacity: 0.5 }}>
+                    <div className={styles.iconWrapper}>
                         <FontAwesomeIcon icon={icon} />
                     </div>
                 )
             )}
-            <h3
-                style={{
-                    margin: "0 0 8px 0",
-                    fontSize: "19px",
-                    fontWeight: 700,
-                    color: "#000000",
-                    lineHeight: "1.2",
-                }}
-            >
+            <h3 className={styles.title}>
                 {title}
             </h3>
             {description && (
-                <p
-                    style={{
-                        margin: "8px 0 24px 0",
-                        fontSize: "15px",
-                        lineHeight: "1.5",
-                        color: "#666666",
-                    }}
-                >
+                <p className={styles.description}>
                     {description}
                 </p>
             )}

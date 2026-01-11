@@ -1,0 +1,160 @@
+/* TabBar.module.css */
+
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0;
+}
+
+.pill {
+    background: rgba(245, 245, 250, 0.26);
+    backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+    -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+    border-radius: 32.5px;
+    margin: 0 5px 25px 5px;
+    height: 65px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 14px 52px rgba(0, 0, 0, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.60),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pillContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: padding 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #000000;
+}
+
+.searchInput {
+    flex: 1;
+    font-size: 17px;
+    font-weight: 500;
+    color: #000000;
+    padding: 0;
+    margin: 0;
+}
+
+.tabList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tabItem {
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 0;
+    width: 50px;
+    height: 56px;
+    background: transparent;
+    border-radius: 32.5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tabItem.active {
+    color: #007aff;
+    width: 90px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tabItem:not(.active):hover {
+    color: #000000 !important;
+}
+
+.icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.label {
+    margin-top: 2px;
+}
+
+.searchButton {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    /* Reuse glass effect properties manually or via composes if supported, 
+     but copying is safer for now to avoid complexity */
+    background: rgba(245, 245, 250, 0.26);
+    backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+    -webkit-backdrop-filter: blur(40px) saturate(190%) contrast(115%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 14px 52px rgba(0, 0, 0, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.60),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+    flex-shrink: 0;
+    margin: 0 5px 25px 0;
+}
+
+.searchButton:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Placeholder styling needs global or specific selector */
+/* Since input is inside Search component, we might need :global if it uses native placeholder 
+   BUT the Search component is imported. If Search accepts style, it applies to root.
+   The placeholder styling in original code was: .liquid-tab-search-input::placeholder
+   Wait, does Search component use that class?
+   Original TabBar.tsx didn't pass that class to Search. 
+   Ah, line 303 in original: `.liquid-tab-search-input::placeholder`.
+   But I don't see `liquid-tab-search-input` being applied to the Search component in the TSX I read!
+   It might be that the Search component *internally* has that class? 
+   Or maybe I missed where it was passed.
+   Let's check the Search usage in lines 181-198.
+   It passes `variant`, `placeholder`, `style`.
+   It does NOT pass `className="liquid-tab-search-input"`.
+   So the original placeholder style rule might have been doing NOTHING or I missed something.
+   Or maybe `Search.tsx` adds it?
+   Regardless, if I want to style the placeholder, I should probably pass a class to Search if it supports it.
+   I'll assume `Search` supports `className` or `inputClassName`.
+   If not, I'll rely on global or just omit it if it wasn't working.
+   However, cleaner is to not worry about it unless I see visual regression.
+   I'll omit the placeholder rule for now unless I find `liquid-tab-search-input` usage.
+*/

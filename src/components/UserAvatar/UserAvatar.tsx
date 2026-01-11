@@ -9,6 +9,9 @@ interface User {
   };
 }
 
+import React from "react";
+import styles from "./UserAvatar.module.css";
+
 interface UserAvatarProps {
   user?: Partial<User>;
   size?: string | number;
@@ -49,19 +52,12 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
 
   return (
     <div
-      className={`user-avatar-container ${className}`}
+      className={`${styles.container} ${className}`}
       style={{
         width: size,
         height: size,
         minWidth: size,
         minHeight: size,
-        borderRadius: "50%",
-        overflow: "hidden",
-        position: "relative",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#f0f0f0",
         ...style,
       }}
       title={effectiveDisplayName}
@@ -69,12 +65,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
       <img
         src={imgSrc}
         alt={effectiveDisplayName}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
+        className={styles.image}
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           // Prevent infinite loop if fallback also fails, but try fallback first

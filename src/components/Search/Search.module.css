@@ -1,0 +1,60 @@
+/* Search.module.css */
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.searchIcon {
+    font-size: 18px;
+    color: #000000;
+    margin-right: 10px;
+}
+
+.input {
+    height: 44px;
+    /* Explicit height often helps */
+}
+
+.closeButtonWrapper {
+    position: absolute;
+    right: 8px;
+    /* Default right if search button hidden */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.closeButtonWrapper.hasSearchButton {
+    right: 50px;
+}
+
+.closeButton {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    color: #999;
+}
+
+.closeButton.transparent {
+    color: #333;
+}
+
+.actionButtonWrapper {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.actionButton {
+    height: 32px;
+    padding: 0;
+    min-width: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+}

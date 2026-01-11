@@ -1,0 +1,33 @@
+/* Overlay.module.css */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
+    background: rgba(0, 0, 0, 0.3);
+    /* Added dimming, previously transparent? */
+    /* Re-reading Overlay.tsx: it did NOT have background color in style. 
+     Just position fixed top/left/right/bottom. 
+     If it was transparent, maybe it relied on something else? 
+     Or maybe it was just a layout overlay?
+     Wait, Overlay.tsx line 19-29:
+     position: fixed... zIndex 4000... NO background color.
+     So it's an invisible overlay that blocks clicks?
+     IF I add a background color, I might change behavior.
+     I'll stick to original (transparent) but usually overlays have a dim background.
+     However, if the user didn't have one, I should check if I missed it.
+     Ah, `Alert` uses `Overlay`. `Alert` itself has the glass background on the *content*.
+     Does `Alert` expect the rest of the screen to be undimmed?
+     Usually overlays dim the background.
+     I'll verify if `Overlay` had a class name or something else.
+     In `Overlay.tsx` line 18: `<div style={{...}}>`. No class name.
+     It seems `Overlay` was invisible (just layout centering and click blocking?).
+     I will keep it transparent to match 1:1, but add comment.
+  */
+}

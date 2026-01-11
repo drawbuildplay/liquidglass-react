@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import styles from "./PopUpButtonMenu.module.css";
 
 export interface PopUpMenuItem {
   id: string;
@@ -166,82 +167,40 @@ export const PopUpButtonMenu: React.FC<PopUpButtonMenuProps> = ({
   const menuContent = (
     <div
       ref={menuRef}
-      style={{
-        ...menuStyle,
-        textWrap: "nowrap",
-        maxHeight: "50vh",
-        overflowY: "auto",
-        background: "rgba(245, 245, 250, 0.65)",
-        backdropFilter: "blur(40px) saturate(190%) contrast(115%)",
-        WebkitBackdropFilter: "blur(40px) saturate(190%) contrast(115%)",
-        border: "1px solid rgba(255, 255, 255, 0.3)",
-        borderRadius: "30px",
-        fontFamily: "var(--lg-font-family)",
-        boxShadow: `
-          0 25px 60px rgba(0,0,0,0.3),
-          inset 0 1px 2px rgba(255, 255, 255, 0.7),
-          inset 0 -1px 1px rgba(0, 0, 0, 0.05)
-        `,
-        padding: "6px",
-        display: "flex",
-        flexDirection: "column",
-        transformOrigin: "top center",
-        animation: "liquid-menu-swoosh 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2)", // Bouncy "poof"
-      }}
+      className={styles.menu}
+      style={menuStyle}
     >
       {items.map((item, index) => {
         if (item.type === "separator") {
           return (
             <div
               key={`sep-${index}`}
-              style={{
-                height: "1px",
-                background: "rgba(0,0,0,0.08)",
-                margin: "4px 10px",
-              }}
+              className={styles.separator}
             />
           );
         }
 
         const isDestructive = item.variant === "destructive";
         const isChecked = item.checked;
+        const customColor = item.color;
+
+        let itemClass = styles.item;
+        if (isDestructive) itemClass += ` ${styles.destructive}`;
+        if (isChecked) itemClass += ` ${styles.active}`;
 
         return (
           <button
             key={item.id}
             onClick={() => handleItemClick(item)}
-            className={`liquid-menu-item ${isChecked ? "active" : ""} ${isDestructive ? "destructive" : ""}`}
+            className={itemClass}
             style={{
-              all: "unset",
-              padding: "12px 20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              gap: "12px",
-              fontSize: "16px",
-              fontWeight: 600,
-              color: isDestructive
-                ? "#FF3B30"
-                : item.color // Use custom color if provided
-                  ? item.color
-                  : isChecked
-                    ? "#007AFF"
-                    : "#000000",
-              borderRadius: "30px",
-              background: isChecked ? "#FFFFFF" : "transparent",
-              boxShadow: isChecked ? "0 2px 8px rgba(0,0,0,0.12)" : "none",
-              cursor: "pointer",
-              transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              userSelect: "none",
-              width: "100%",
-              boxSizing: "border-box",
-              textAlign: "left",
+              color: !isDestructive && customColor ? customColor : undefined
             }}
           >
             {item.icon && (
               <FontAwesomeIcon
                 icon={item.icon}
-                style={{ fontSize: "16px", width: "20px" }}
+                className={styles.itemIcon}
               />
             )}
             <span>{item.label}</span>
@@ -256,31 +215,12 @@ export const PopUpButtonMenu: React.FC<PopUpButtonMenuProps> = ({
       <div
         ref={triggerRef}
         onClick={() => setIsOpen(!isOpen)}
-        style={{
-          cursor: "pointer",
-          display: "flex",
-          width: "100%",
-          minWidth: matchMenuWidth ? "220px" : "auto",
-        }}
+        className={`${styles.triggerWrapper} ${matchMenuWidth ? styles.matchWidth : styles.autoWidth}`}
       >
         {trigger}
       </div>
 
       {isOpen && createPortal(menuContent, document.body)}
-
-      {/* @ts-ignore */}
-      <style jsx>{`
-        @keyframes liquid-menu-swoosh {
-          from {
-            transform: scale(0.2) translateY(-15px);
-            opacity: 0;
-          }
-          to {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-          }
-        }
-      `}</style>
     </>
   );
 };

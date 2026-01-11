@@ -1,5 +1,5 @@
 import React from "react";
-import "./GlassPanel.css";
+import styles from "./GlassPanel.module.css";
 
 interface GlassPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export const GlassPanel: React.FC<GlassPanelProps> = ({
   ...props
 }) => {
   return (
-    <div className={`liquid-glass-panel ${className}`} {...props}>
+    <div className={`${styles.panel} ${className}`} {...props}>
       {children}
     </div>
   );

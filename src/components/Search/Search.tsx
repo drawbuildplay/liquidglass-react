@@ -7,6 +7,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./Search.module.css";
 
 export interface SearchProps {
   value?: string;
@@ -102,19 +103,13 @@ export const Search: React.FC<SearchProps> = ({
 
   return (
     <div
-      className={`search-container ${className}`}
-      style={{
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        position: "relative",
-        ...style,
-      }}
+      className={`${styles.container} ${className}`}
+      style={style}
     >
       {isTransparent && (
         <FontAwesomeIcon
           icon={faSearch}
-          style={{ fontSize: "18px", color: "#000000", marginRight: "10px" }}
+          className={styles.searchIcon}
         />
       )}
       <Input
@@ -127,10 +122,7 @@ export const Search: React.FC<SearchProps> = ({
         disabled={disabled}
         autoFocus={autoFocus}
         autoComplete="off"
-        style={{
-          height: "44px", // explicit height often helps
-          ...style, // allow overrides but verify if this duplicates container styles
-        }}
+        className={styles.input}
         type={type}
         inputMode={inputMode}
         enterKeyHint={enterKeyHint}
@@ -138,13 +130,7 @@ export const Search: React.FC<SearchProps> = ({
 
       {showCloseButton && (
         <div
-          style={{
-            position: "absolute",
-            right: showSearchButton ? "50px" : "8px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 2,
-          }}
+          className={`${styles.closeButtonWrapper} ${showSearchButton ? styles.hasSearchButton : ""}`}
         >
           <Button
             variant="ghost"
@@ -156,13 +142,7 @@ export const Search: React.FC<SearchProps> = ({
               }
             }}
             icon={faTimes}
-            style={{
-              width: "30px",
-              height: "30px",
-              padding: 0,
-              borderRadius: "50%",
-              color: isTransparent ? "#333" : "#999",
-            }}
+            className={`${styles.closeButton} ${isTransparent ? styles.transparent : ""}`}
             title={searchTerm.trim() ? "Clear search" : "Close search"}
           />
         </div>
@@ -170,26 +150,12 @@ export const Search: React.FC<SearchProps> = ({
 
       {/* Search Action Button */}
       {showSearchButton && !hideSearchButton && (
-        <div
-          style={{
-            position: "absolute",
-            right: "8px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 2,
-          }}
-        >
+        <div className={styles.actionButtonWrapper}>
           <Button
             onClick={handleSearchClick}
             disabled={!searchTerm.trim() || disabled}
             variant="secondary"
-            style={{
-              height: "32px",
-              padding: "0",
-              minWidth: "32px",
-              borderRadius: "50%",
-              fontSize: "14px",
-            }}
+            className={styles.actionButton}
           >
             <FontAwesomeIcon icon={faChevronRight} />
           </Button>

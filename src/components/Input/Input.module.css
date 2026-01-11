@@ -1,0 +1,73 @@
+/* Input.module.css */
+
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+    /* Default styles */
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.wrapper.transparent {
+    background: transparent;
+    border-radius: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: auto;
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 15px;
+    color: inherit;
+    font-family: inherit;
+}
+
+/* Specific padding overrides based on layout */
+.paddingLeftSearch {
+    padding-left: 12px;
+}
+
+.paddingRightElement {
+    padding-right: 0;
+}
+
+.searchIcon {
+    padding-left: 12px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    color: #8e8e93;
+    pointer-events: none;
+}
+
+.leftElement {
+    padding-left: 12px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.rightElement {
+    padding-right: 12px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}

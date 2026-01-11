@@ -1,6 +1,6 @@
-// ... imports
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import styles from "./Sheet.module.css";
 
 export interface SheetProps {
   isOpen: boolean;
@@ -50,88 +50,27 @@ export const Sheet: React.FC<SheetProps> = ({
 
   if (!isOpen) return null;
 
-  const desktopStyles: React.CSSProperties = {
-    top: "50%",
-    left: "50%",
-    bottom: "auto",
-    right: "auto",
-    transform: "translate(-50%, -50%)",
-    height: "80%",
-    width: "auto",
-    aspectRatio: "3/4",
-    borderRadius: "20px",
-    maxWidth: "100%",
-    maxHeight: "100%",
-  };
-
-  const mobileStyles: React.CSSProperties = {
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: height,
-    borderTopLeftRadius: "20px",
-    borderTopRightRadius: "20px",
-    width: "100%",
-  };
-
   const isDark = variant === "dark";
+  const variantClass = isDark ? styles.dark : styles.light;
+  const layoutClass = isDesktop ? styles.desktop : styles.mobile;
+  const backdropClass = isDesktop ? styles.desktop : styles.mobile;
 
-  // Define Glass Styles
-  const glassStyles: React.CSSProperties = isDark
-    ? {
-      backgroundColor: "rgba(20, 20, 20, 0.85)",
-      backdropFilter: "blur(20px) saturate(180%)",
-      WebkitBackdropFilter: "blur(20px) saturate(180%)",
-      border: "1px solid rgba(255, 255, 255, 0.15)",
-      color: "white",
-    }
-    : {
-      backgroundColor: "rgba(255, 255, 255, 0.4)",
-      backdropFilter: "blur(20px) saturate(100%) contrast(100%)",
-      WebkitBackdropFilter: "blur(20px) saturate(190%) contrast(115%)",
-      border: "1px solid rgba(255, 255, 255, 0.3)",
-      color: "inherit",
-    };
+  // For mobile, apply height dynamically if needed (passed prop)
+  // But wait, module CSS .mobile has fixed/default behavior.
+  // The original component applied `height: height` (prop) inline for mobile.
+  // So we should pass inline style for height ONLY if mobile.
+
+  const dynamicStyle: React.CSSProperties = isDesktop
+    ? { ...style }
+    : { height: height, ...style };
+
+  const wrapperClass = position === "absolute" ? styles.absoluteWrapper : "";
 
   return ReactDOM.createPortal(
-    <div
-      style={{
-        position: position,
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 3000,
-      }}
-    >
-      <style>{`
-                @keyframes lg-sheet-slide-up {
-                    from { transform: translateY(100%); }
-                    to { transform: translateY(0); }
-                }
-                @keyframes lg-sheet-fade-in {
-                    from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
-                    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-                }
-                @keyframes lg-backdrop-fade {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-            `}</style>
-
+    <div className={`${styles.wrapper} ${wrapperClass}`}>
       {/* Backdrop */}
       <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: isDesktop ? "rgba(0,0,0,0.6)" : "transparent",
-          animation:
-            "lg-backdrop-fade 0.4s cubic-bezier(0.33, 1, 0.68, 1) forwards",
-          touchAction: "none",
-        }}
+        className={`${styles.backdrop} ${backdropClass}`}
         data-testid="sheet-backdrop"
         onClick={onClose}
         role="button"
@@ -146,45 +85,15 @@ export const Sheet: React.FC<SheetProps> = ({
 
       {/* Sheet */}
       <div
-        style={{
-          position: "absolute",
-          overflow: "hidden",
-          boxShadow: `
-                    0 8px 32px 0 rgba(0, 0, 0, 0.3),
-                    inset 0 1px 1px rgba(255, 255, 255, 0.4)
-                `,
-          display: "flex",
-          flexDirection: "column",
-          fontFamily: "var(--lg-font-family)",
-
-          // Apply dynamic glass styles
-          ...glassStyles,
-
-          // Merge styles
-          ...(isDesktop ? desktopStyles : mobileStyles),
-
-          // Custom overrides
-          ...style,
-
-          // Animation
-          animation: isDesktop
-            ? "lg-sheet-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards"
-            : "lg-sheet-slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        }}
+        className={`${styles.sheet} ${layoutClass} ${variantClass}`}
+        style={dynamicStyle}
         role="dialog"
         aria-modal="true"
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
       >
         {/* Content */}
-        <div
-          style={{
-            flex: 1,
-            padding: "0",
-            overflowY: "auto",
-            position: "relative",
-          }}
-        >
+        <div className={styles.content}>
           {children}
         </div>
       </div>

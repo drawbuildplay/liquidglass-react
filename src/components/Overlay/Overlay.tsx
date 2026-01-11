@@ -1,5 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
+import styles from "./Overlay.module.css";
 
 export interface OverlayProps {
   isOpen: boolean;
@@ -16,17 +17,7 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   return createPortal(
     <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 4000,
-      }}
+      className={styles.backdrop}
       onClick={onClose}
     >
       <div onClick={(e) => e.stopPropagation()}>{children}</div>

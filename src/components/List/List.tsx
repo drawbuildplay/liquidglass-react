@@ -1,5 +1,5 @@
 import React from "react";
-import "./List.css";
+import styles from "./List.module.css";
 
 interface ListProps {
     children: React.ReactNode;
@@ -13,7 +13,7 @@ export const List: React.FC<ListProps> = ({
     style,
 }) => {
     return (
-        <div className={`liquid-list ${className}`} style={style}>
+        <div className={`${styles.list} ${className}`} style={style}>
             {children}
         </div>
     );
@@ -40,23 +40,16 @@ export const ListItem: React.FC<ListItemProps> = ({
 }) => {
     return (
         <div
-            className={`liquid-list-item ${className}`}
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                borderBottom: '1px solid rgba(0,0,0,0.05)',
-                cursor: onClick ? 'pointer' : 'default',
-                ...style
-            }}
+            className={`${styles.listItem} ${onClick ? styles.clickable : styles.defaultCursor} ${className}`}
+            style={style}
             onClick={onClick}
         >
-            <div style={{ flex: 1, overflow: 'hidden' }}>
-                {title && <div style={{ fontWeight: 600, fontSize: '16px', marginBottom: '4px' }}>{title}</div>}
-                {subtitle && <div style={{ fontSize: '13px', opacity: 0.6 }}>{subtitle}</div>}
+            <div className={styles.itemContent}>
+                {title && <div className={styles.itemTitle}>{title}</div>}
+                {subtitle && <div className={styles.itemSubtitle}>{subtitle}</div>}
                 {children}
             </div>
-            {rightElement && <div style={{ marginLeft: '12px' }}>{rightElement}</div>}
+            {rightElement && <div className={styles.itemRight}>{rightElement}</div>}
         </div>
     );
 };
@@ -80,13 +73,13 @@ export const ListCard: React.FC<ListCardProps> = ({
 }) => {
     return (
         <div
-            className={`liquid-card ${className}`}
+            className={`${styles.card} ${className}`}
             style={style}
             onClick={onClick}
         >
-            {left && <div className="liquid-card-left">{left}</div>}
-            <div className="liquid-card-center">{children}</div>
-            {right && <div className="liquid-card-right">{right}</div>}
+            {left && <div className={styles.left}>{left}</div>}
+            <div className={styles.center}>{children}</div>
+            {right && <div className={styles.right}>{right}</div>}
         </div>
     );
 };

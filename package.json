@@ -14,7 +14,7 @@
       "import": "./dist/liquid-glass-react.js",
       "require": "./dist/liquid-glass-react.umd.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/liquid-glass-react.css"
   },
   "scripts": {
     "dev": "vite",

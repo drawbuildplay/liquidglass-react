@@ -1,0 +1,158 @@
+/* SideDrawer.module.css */
+
+/* Fixed Toggle Button Container */
+.fixedToggle {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 2000;
+    /* Above the drawer (1000) */
+}
+
+/* Adjust button style */
+.toggleBtn {
+    /* Force circles */
+    border-radius: 50% !important;
+    padding: 0 !important;
+}
+
+.toggleBtn:hover {
+    transform: scale(1.05);
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content {
+    pointer-events: auto;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.glass {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    backdrop-filter: blur(20px);
+    background: rgba(20, 20, 23, 0.95);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    width: 650px;
+    padding: 0 !important;
+}
+
+.inner {
+    flex: 1;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    scrollbar-width: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.inner::-webkit-scrollbar {
+    display: none;
+}
+
+.inner.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.backdrop {
+    /* Styles if needed, or rely on .open class below? */
+    /* Original css didn't have base styles for backdrop? */
+    /* Ah, original CSS had .side-drawer-backdrop { display: none } on mobile only? */
+    /* Checking original: It missed a base declaration? No, I see:
+       .side-drawer-backdrop { display: none } in media query?
+       Wait, line 51 in original TSX uses `side-drawer-backdrop`.
+       Line 136 in original CSS hides it on mobile.
+       Where is the desktop style? It seems missing in the original CSS file I read?
+       Lines 1-139 didn't show `.side-drawer-backdrop` base class!
+       Maybe it's global? or I missed it.
+       Actually, I only see it in the media query (hidden).
+       If it's missing, I'll add a default "fixed inset-0" style so it works.
+    */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    /* Below drawer */
+    display: none;
+    /* Hidden by default */
+}
+
+.backdrop.open {
+    display: block;
+    /* Show when open? */
+    /* Needs transparent or specific behavior? */
+    /* If the user clicks it to close, it needs pointer events. */
+}
+
+/* Desktop Behavior */
+@media (min-width: 769px) {
+    .container {
+        transform: translateX(0);
+    }
+
+    .container.collapsed {
+        transform: translateX(-650px);
+    }
+
+    .inner {
+        overflow: hidden;
+    }
+}
+
+/* Mobile: Full Screen Slide-out Overlay */
+@media (max-width: 768px) {
+    .container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3000;
+        transform: translateX(0);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .container.collapsed {
+        transform: translateX(-100%);
+    }
+
+    .glass {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        border: none;
+        background: rgba(20, 20, 23, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .fixedToggle {
+        display: none;
+    }
+
+    .container.collapsed .inner {
+        display: block;
+    }
+
+    .backdrop {
+        display: none;
+    }
+}
