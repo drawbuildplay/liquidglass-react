@@ -51,11 +51,13 @@ export const SideDrawer: React.FC<SideDrawerProps> = ({
         </div>
       )}
 
-      {/* Backdrop for clicking outside to close */}
-      <div
-        className={`${styles.backdrop} ${isOpen ? styles.open : ""}`}
-        onClick={onToggle}
-      />
+      {/* Backdrop for clicking outside to close - Only show when floating */}
+      {floating && (
+        <div
+          className={`${styles.backdrop} ${isOpen ? styles.open : ""}`}
+          onClick={onToggle}
+        />
+      )}
 
       {/* Sliding Panel */}
       <div
