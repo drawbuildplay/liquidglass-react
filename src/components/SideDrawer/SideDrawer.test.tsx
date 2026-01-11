@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SideDrawer } from "./SideDrawer";
-import { Button } from "../Button/Button";
 
 import { vi } from "vitest";
 

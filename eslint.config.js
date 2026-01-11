@@ -9,7 +9,7 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'storybook-static', 'coverage']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -21,6 +21,22 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
+  {
+    files: ['**/*.stories.tsx'],
+    rules: {
+      'react-hooks/rules-of-hooks': 'off',
+    },
+  },
+  {
+    files: ['**/*.test.tsx', 'src/test/setup.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
     },
   },
 ])

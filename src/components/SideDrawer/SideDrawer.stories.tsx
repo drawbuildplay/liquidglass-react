@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SideDrawer } from "./SideDrawer";
-import { Button } from "../Button/Button";
 import { useState } from "react";
 
 const meta: Meta<typeof SideDrawer> = {

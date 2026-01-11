@@ -4,7 +4,6 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import {
   PopUpButtonMenu,
-  type PopUpMenuItem,
 } from "../PopUpButtonMenu/PopUpButtonMenu";
 import styles from "./ButtonGroup.module.css";
 

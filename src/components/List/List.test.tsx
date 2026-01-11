@@ -1,8 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { List, ListItem, ListCard } from "./List";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Mock FontAwesomeIcon to avoid issues
 jest.mock("@fortawesome/react-fontawesome", () => ({

@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import {
   LiquidBarChart,
   LiquidLineChart,
@@ -6,6 +5,7 @@ import {
   ScoreRing,
   LiquidDistributionChart,
 } from "./LiquidCharts";
+import type { Meta } from "@storybook/react";
 
 const meta: Meta = {
   title: "Components/Charts",

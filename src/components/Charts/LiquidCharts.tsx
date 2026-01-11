@@ -14,10 +14,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend,
-  RadialBarChart,
-  RadialBar,
-  PolarAngleAxis,
 } from "recharts";
 import { GlassPanel } from "../GlassPanel/GlassPanel";
 
@@ -36,7 +32,6 @@ interface LiquidSpectrumChartProps {
 
 const SpectrumTooltip = ({ active, payload, total }: any) => {
   if (active && payload && payload.length) {
-    const data = payload[0].payload;
     // In a stacked bar, payload[0] gives the specific segment data if set up correctly,
     // or we might need to find the specific key unless we map data creatively.
     // Actually, for a single stacked bar, we usually reshape data to be { "Strong": 5, "Standard": 10 ... }
@@ -155,12 +150,12 @@ export const LiquidSpectrumChart: React.FC<LiquidSpectrumChartProps> = ({
                 : isFirst
                   ? [12, 0, 0, 12] // Top-Left, Top-Right, Bottom-Right, Bottom-Left... wait, layout vertical?
                   : // Vertical Layout: Bars grow from Left to Right.
-                    // Radius prop for Bar: [topLeft, topRight, bottomRight, bottomLeft]
-                    // For horizontal bar (layout vertical):
-                    // Left end: topLeft & bottomLeft
-                    // Right end: topRight & bottomRight
+                  // Radius prop for Bar: [topLeft, topRight, bottomRight, bottomLeft]
+                  // For horizontal bar (layout vertical):
+                  // Left end: topLeft & bottomLeft
+                  // Right end: topRight & bottomRight
 
-                    isFirst
+                  isFirst
                     ? [12, 0, 0, 12] // Left side rounded
                     : isLast
                       ? [0, 12, 12, 0] // Right side rounded

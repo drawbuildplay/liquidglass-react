@@ -38,7 +38,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
     displayName ?? user?.displayName ?? user?.username ?? "User";
 
   // Resolve default image from level
-  let effectiveDefaultImage =
+  const effectiveDefaultImage =
     levelDefaultImage ?? user?.userLevel?.defaultImage;
 
   // Note: Previous logic using UserUtils.getLevelInfo removed to decouple component.

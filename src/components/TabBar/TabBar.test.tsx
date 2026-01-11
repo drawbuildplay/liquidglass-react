@@ -40,7 +40,7 @@ describe("TabBar", () => {
   });
 
   test("shows search input when toggled", () => {
-    const { rerender } = render(
+    render(
       <TabBar items={mockItems} activeTabId="tab1" showSearch={true} />,
     );
 

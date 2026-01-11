@@ -43,7 +43,6 @@ export const Search: React.FC<SearchProps> = ({
   showCloseButton = false,
   onClose,
   showSearchButton = false,
-  searchButtonText: _searchButtonText = "Search",
 
   hideSearchButton = false,
   autoFocus = false,
